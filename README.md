@@ -3,7 +3,7 @@
 
 To perform Data preprocessing in a data set downloaded from Kaggle
 
-##REQUIPMENTS REQUIRED:
+## REQUIPMENTS REQUIRED:
 Hardware – PCs
 Anaconda – Python 3.7 Installation / Google Colab /Jupiter Notebook
 
@@ -32,10 +32,44 @@ Normalizing the data
 Splitting the data into test and train
 
 ## PROGRAM:
-/Write your code here/
-
+```
+Developed by: D.vishnu vardhan reddy
+Register No: 212221230023
+```
+```
+import pandas as pd
+df=pd.read_csv("Churn_Modelling.csv")
+df.head()
+df.isnull().sum()
+df.drop(["RowNumber","Age","Gender","Geography","Surname"],inplace=True,axis=1)
+print(df)
+x=df.iloc[:,:-1].values
+y=df.iloc[:,-1].values
+print(x)
+print(y)
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+df1 = pd.DataFrame(scaler.fit_transform(df))
+print(df1)
+from sklearn.model_selection import train_test_split
+xtrain,ytrain,xtest,ytest=train_test_split(x,y,test_size=0.2,random_state=2)
+print(xtrain)
+print(len(xtrain))
+print(xtest)
+print(len(xtest))
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+df1 = sc.fit_transform(df)
+print(df1)
+```
 ## OUTPUT:
-/ Show the result/
+![image](https://user-images.githubusercontent.com/94175324/226857568-9b2197d5-4a4b-4eb9-9edd-b98b0b545a68.png)
+![image](https://user-images.githubusercontent.com/94175324/226857713-2d34e88e-21dc-4d21-87db-5b3ea07e0caf.png)
+![image](https://user-images.githubusercontent.com/94175324/226857842-2fb7e099-a852-4874-9820-062c07f94a6b.png)
+![image](https://user-images.githubusercontent.com/94175324/226857945-62801e50-088e-4b92-9d67-867f8d767049.png)
+![image](https://user-images.githubusercontent.com/94175324/226858046-7c4c35aa-c011-4ccc-9468-839b53bfab47.png)
+![image](https://user-images.githubusercontent.com/94175324/226858140-a7f63838-d0e0-45cb-9e79-373b55c070bc.png)
 
 ## RESULT
-/Type your result here/
+Thus the above program for standardizing the given data was implemented successfully.
+
